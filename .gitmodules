@@ -1,3 +1,4 @@
 [submodule "EquicordPlugins"]
 	path = src/userplugins
 	url = https://github.com/Reycko/EquicordPlugins.git
+	branch = main
