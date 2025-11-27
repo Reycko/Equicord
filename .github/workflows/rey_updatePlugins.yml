@@ -1,0 +1,38 @@
+name: Reycko/EquicordPlugins synchronization
+
+on:
+    schedule:
+        - cron: "0 */2 * * *"
+
+jobs:
+    sync:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+              with:
+                  token: ${{ secrets.GITHUB_TOKEN }}
+                  fetch-depth: 0
+                  submodules: recursive
+            - name: Check
+              id: check
+              run: |
+                  if [[ -n "$(git status --porcelain)" ]]; then
+                    echo "changed=1" >> $GITHUB_OUTPUT
+                  else
+                    echo "changed=0" >> $GITHUB_OUTPUT
+                  fi
+
+            - name: Update submodule
+              if: steps.check.outputs.changed == '1'
+              run: |
+                  git config user.name "github-actions[bot]"
+                  git config user.email "github-actions[bot]@users.noreply.github.com"
+
+                  git add src/userplugins
+                  git commit -m "[auto] chore: update userplugins"
+
+                  git pull --rebase origin ${{ github.ref_name }}
+
+                  git push
