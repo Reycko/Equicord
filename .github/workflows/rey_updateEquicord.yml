@@ -28,7 +28,7 @@ jobs:
             - name: Remove .github
               run: |
                    git checkout upstream/main
-                   git rm .github/**/*
+                   git reset -- .github/**/*
 
             - name: Rebase
               run: |
