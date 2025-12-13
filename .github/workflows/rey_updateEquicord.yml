@@ -28,7 +28,7 @@ jobs:
             - name: Rebase
               run: |
                    git checkout main
-                   git rebase upstream/main
+                   git rebase --committer-date-is-author-date upstream/main
 
             - name: Force Push
               run: git push --force-with-lease origin main
