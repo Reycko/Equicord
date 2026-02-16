@@ -1,3 +1,7 @@
+> [!CAUTION]
+> I am archiving Reycko/Equicord, and Reycko/EquicordPlugins, as I will not use Discord anymore due to their age verification policy.  
+> This means that this fork, and its plugins, might break at any time, and I will not provide support for either.
+
 # [<img src="./browser/icon.png" width="40" align="left" alt="Equicord">](https://github.com/Equicord/Equicord) Equicord
 
 [![Equibop](https://img.shields.io/badge/Equibop-grey?style=flat)](https://github.com/Equicord/Equibop)
